@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
 const Header = () => {
-
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+
   return (
     <div className='w-full h-full absolute bg-gradient-to-r from-blue-400 to-emerald-400'>
         <header className='flex justify-between items-center text-black py-6 px-8 md:px-32 bg-white drop-shadow-md'>
@@ -22,7 +22,7 @@ const Header = () => {
                 <input type='text' placeholder='Search...' className='py-2 pl-10 rounded-xl border-2 border-blue-300 focus:bg-slate-100 focus:outline-sky-500'/>
             </div>
 
-            <i className='bx bx-menu xl:hidden block text-5xl cursor-pointer'
+            <i className='block xl:!hidden bx bx-menu text-5xl cursor-pointer' 
             onClick={() => setIsMenuOpen(!isMenuOpen)}></i>
 
             <div className={`absolute xl:hidden top-24 left-0 w-full bg-white flex flex-col items-center gap-6 font-semibold text-lg transform transition-transform ${isMenuOpen ? "opacity-100" : "opacity-0"}`} 

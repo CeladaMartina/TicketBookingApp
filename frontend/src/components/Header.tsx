@@ -4,7 +4,7 @@ const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <div className='w-full h-full absolute bg-gradient-to-r from-blue-400 to-emerald-400'>
+    // <div className='w-full h-full absolute bg-gradient-to-r from-blue-400 to-emerald-400'>
         <header className='flex justify-between items-center text-black py-6 px-8 md:px-32 bg-white drop-shadow-md'>
             <a href='#'>
                 <img src="https://cdn-icons-png.flaticon.com/512/9769/9769450.png" alt='' className='w-10 w hover:scale-105 transition-all'/>
@@ -41,7 +41,7 @@ const Header = () => {
                 </li>
             </div>
         </header>
-    </div>
+    //</div>
   )
 }
 

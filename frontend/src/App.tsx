@@ -1,16 +1,15 @@
 import React from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-import Movie from './components/Movie Section/Movie';
-import Container from './components/Body Section/Container';
+import Home from './components/Home/Home';
+import Header from './components/Header';
 
 const App: React.FC = () =>  {
   return (
-    <div className="App">
-      <h1 className='text-xl font-bold text-red-500'>Hello</h1>
+    <div className="container">    
+    <Header />  
       <Routes>
-        <Route path='/' element={<Movie />} />
-        <Route path='/container' element={<Container />} />
+        <Route path='/Home' element={<Home />} />        
       </Routes>
     </div>
   );

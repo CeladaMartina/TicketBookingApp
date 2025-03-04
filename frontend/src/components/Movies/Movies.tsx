@@ -7,6 +7,7 @@ interface Movie {
   name: string;
   description: string;
   image: string;
+  category:string
 }
 
 const Movies = () => {
@@ -26,7 +27,7 @@ const Movies = () => {
   }, []);
 
   return (
-    <div className="w-full lg:px-28 md:px-16 sm:px-7 px-4 my-[8ch]">
+    <div className="w-full lg:px-28 md:px-16 sm:px-7 px-4 my-[8ch] space-y-14">
       {/* Search and Filter */}
       <div className="w-full grid grid-cols-6 gap-14 bg-neutral-200/60 dark:bg-neutral-900/40 rounded-md px-6 py-5 items-center justify-between">
         <div className="flex items-center gap-x-2.5 col-span-2">
@@ -58,29 +59,29 @@ const Movies = () => {
 
       {/* Movie cards */}
       <div className="w-full grid grid-cols-3 gap-10">
-        <Link
-          to={"/movie/movie-details"}
-          className="w-full bg-neutral-200/60 block dark:bg-neutral-900/40 rounded-xl p-4"
-        >
-          {movies.map((item) => (
+        {movies.map((item) => (
+          <Link
+            key={item.id}
+            to={"/movie/movie-details"}
+            className="w-full bg-neutral-200/60 block dark:bg-neutral-900/40 rounded-xl p-4"
+          >
             <img
               src={item.image}
               alt={item.name}
               className="w-full aspect-video object-contain object-center"
             />
-          ))}
-        </Link>
-
-        {/* <Link
-          to={"/movie/movie-details"}
-          className="w-full bg-neutral-200/60 block dark:bg-neutral-900/40 rounded-xl p-4"
-        >
-          <img
-            src=""
-            alt=""
-            className="w-full aspect-video object-contain object-center"
-          />
-        </Link> */}
+            <div className="px-3 py-4 space-y-2">
+              <div className="flex items-center justify-between">
+                <h1 className="text-xl font-semibold text-neutral-800 dark:text-neutral-50">
+                  {item.name}
+                </h1>
+                <p className="text-sm font-normal text-neutral-800 dark:text-neutral-50">
+                  {item.category}
+                </p>
+              </div>
+            </div>
+          </Link>
+        ))}        
       </div>
     </div>
   );

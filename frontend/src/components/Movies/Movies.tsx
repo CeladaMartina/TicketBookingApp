@@ -1,7 +1,30 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+interface Movie {
+  id: number;
+  name: string;
+  description: string;
+  image: string;
+}
+
 const Movies = () => {
+  const [movies, setMovies] = useState<Movie[]>([]);
+
+  useEffect(() => {
+    const getMovies = async () => {
+      try {
+        const resp = await axios.get<Movie[]>("http://localhost:4000/movies");
+        console.log(resp.data);
+        setMovies(resp.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getMovies();
+  }, []);
+
   return (
     <div className="w-full lg:px-28 md:px-16 sm:px-7 px-4 my-[8ch]">
       {/* Search and Filter */}
@@ -35,9 +58,29 @@ const Movies = () => {
 
       {/* Movie cards */}
       <div className="w-full grid grid-cols-3 gap-10">
-        <Link to={"/movie/movie-details"} className="w-full bg-neutral-200/60 block dark:bg-neutral-900/40 rounded-xl p-4">
-          <img src="" alt="" className="w-full aspect-video object-contain object-center" />
+        <Link
+          to={"/movie/movie-details"}
+          className="w-full bg-neutral-200/60 block dark:bg-neutral-900/40 rounded-xl p-4"
+        >
+          {movies.map((item) => (
+            <img
+              src={item.image}
+              alt={item.name}
+              className="w-full aspect-video object-contain object-center"
+            />
+          ))}
         </Link>
+
+        {/* <Link
+          to={"/movie/movie-details"}
+          className="w-full bg-neutral-200/60 block dark:bg-neutral-900/40 rounded-xl p-4"
+        >
+          <img
+            src=""
+            alt=""
+            className="w-full aspect-video object-contain object-center"
+          />
+        </Link> */}
       </div>
     </div>
   );

@@ -13,7 +13,7 @@ const Search = () => {
                         <option value=''>Select  Location</option>
                         <option value='movie1'>Capitan America</option>
                         <option value='movie2'>Moana 2</option>
-                        <option value='movie2'>Mufasa: El rey Leon</option>
+                        <option value='movie3'>Mufasa: El rey Leon</option>
                     </select>
                 </div>
                 <div className=''>

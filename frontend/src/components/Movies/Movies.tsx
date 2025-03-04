@@ -1,30 +1,17 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
-interface Movie {
-  id: number;
-  name: string;
-  description: string;
-  image: string;
-  category:string
-}
+import Movie from "../../interfaces/interfaces";
+import { getMovies } from "../../services/movies";
 
 const Movies = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
 
-  useEffect(() => {
-    const getMovies = async () => {
-      try {
-        const resp = await axios.get<Movie[]>("http://localhost:4000/movies");
-        console.log(resp.data);
-        setMovies(resp.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    getMovies();
-  }, []);
+  const handleFetchMovies = async () => {
+    const data = await getMovies();
+    setMovies(data);
+  };
+
+  handleFetchMovies();
 
   return (
     <div className="w-full lg:px-28 md:px-16 sm:px-7 px-4 my-[8ch] space-y-14">
@@ -50,9 +37,11 @@ const Movies = () => {
             className="w-full appearance-none text-neutral-800 dark:text-neutral-100 placeholder:text-neutral-400 dark:placeholder:text-neutral-600 inline-block bg-neutral-200/60 dark: bg-neutral-900/60 px-3 h-12 border border-neutral-200 dark:border-neutral-900 rounded-md focus:outline-none focus:bg-neutral-100 dark:focus:bg-neutral-900"
           >
             <option value="">Select Category</option>
-            <option value="movie1">Terror</option>
-            <option value="movie2">Comedy</option>
-            <option value="movie3">Romance</option>
+            {movies.map((movie) => (
+              <option key={movie.id} value={movie.id}>
+                {movie.category}
+              </option>
+            ))}
           </select>
         </div>
       </div>
@@ -81,7 +70,7 @@ const Movies = () => {
               </div>
             </div>
           </Link>
-        ))}        
+        ))}
       </div>
     </div>
   );

@@ -51,7 +51,7 @@ const Movies = () => {
         {movies.map((item) => (
           <Link
             key={item.id}
-            to={"/movie/movie-details"}
+            to={"/movie/details"}
             className="w-full bg-neutral-200/60 block dark:bg-neutral-900/40 rounded-xl p-4"
           >
             <img

@@ -27,6 +27,7 @@ try{
 
 //definimos route
 app.use("/movies", movieRoute);
+app.use("/customers", movieRoute)
 
 
 app.listen(PORT, () => {

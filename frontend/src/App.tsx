@@ -5,6 +5,7 @@ import Home from './components/Home/Home';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Movies from './components/Movies/Movies';
+import MovieDetails from './components/Movies/MovieDetails';
 
 const App: React.FC = () =>  {
   return (
@@ -13,6 +14,7 @@ const App: React.FC = () =>  {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/movies' element={<Movies />} />        
+        <Route path='/movie/details' element={<MovieDetails />} /> 
       </Routes>
     <Footer />  
     </div>

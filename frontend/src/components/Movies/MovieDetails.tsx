@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import MovieTime from "./MovieTime";
+import Seat from "./Seat";
 
 const MovieDetails = () => {
   return (
@@ -31,6 +32,10 @@ const MovieDetails = () => {
           </div>
 
           {/* seleccionar asiento */}
+          <div className="space-y-6">
+            <Seat />
+          </div>
+          
           {/* checkout boton */}
           <div className="flex">
             <Link

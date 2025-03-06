@@ -39,7 +39,7 @@ const MovieDetails = () => {
           {/* checkout boton */}
           <div className="flex">
             <Link
-              to={"/movies/movie-details/checkout"}
+              to={"/movie/details/checkout"}
               className="w-full bg-blue-600 text-neutral-50 font-medium text-base px-6 py-2 rounded-md hover:bg-blue-700 ease-in-out duration-300"
             >
               Processed to Checkout

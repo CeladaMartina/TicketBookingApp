@@ -134,7 +134,7 @@ const MovieSeatLayout = () => {
                         {/* poner el * del precio de la pelicula */}
                         $ {selectedSeats.length * 750} 
                     </p>
-                    <span className='text-sm text-neutral-400 dark:text-neutral-600 font-normal'>
+                    <span className='text-sm text-neutral-600 font-normal'>
                         (Including all of the taxes)
                     </span>
                 </div>

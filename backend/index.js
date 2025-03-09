@@ -5,6 +5,8 @@ import movieRoute from "./route/movie.route.js"
 import cors from "cors"
 
 const app = express();
+app.use(express.json()); // Needed to parse JSON requests
+app.use(express.urlencoded({ extended: true })); // Needed for URL-encoded requests
 app.use(cors());
 
 dotenv.config();
@@ -28,6 +30,7 @@ try{
 //definimos route
 app.use("/movies", movieRoute);
 app.use("/customers", movieRoute)
+
 
 
 app.listen(PORT, () => {

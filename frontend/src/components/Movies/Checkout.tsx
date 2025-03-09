@@ -1,4 +1,39 @@
 import React from "react";
+import { loadStripe } from "@stripe/stripe-js";
+
+const apiUrl = 'http://localhost:4000/'
+
+const paymentMethod = async () =>{
+  const stripe = await loadStripe("pk_test_51R0WdTPG1GttzLX3fIJ4lH09JbRyAP07CUn13KsiCUg5wW5XOwtzIYu4vn2pB8JbLPXp8pJQUyUdbKj3gsAvOFDR00sC7gq0iW")
+  const body = {
+    products: [ 
+      {
+        name: "The Shawshank Redemption",
+        price: "500.99",
+        image: "https://upload.wikimedia.org/wikipedia/en/8/81/ShawshankRedemptionMoviePoster.jpg",
+      }
+    ]
+  }
+  const headers = {
+    "Content-Type":"application/json"
+  }
+
+  const response = await fetch(`${apiUrl}movies/create-checkout-session`, {
+    method:"POST",
+    headers: headers,
+    body:JSON.stringify(body)
+  })
+
+  const session = await response.json();
+
+  const result = stripe?.redirectToCheckout({
+    sessionId: session.id
+  })
+
+  console.log(result);
+
+ 
+}
 
 const Checkout = () => {
   return (
@@ -93,8 +128,8 @@ const Checkout = () => {
             </div>
           </div>
 
-            <button className="w-full px-8 h-12 bg-blue-600 text-neutral-50 text-base font-normal rounded-md flex items-center justify-center gap-x-2">
-                Processed to Pay <i className='bx bx-right-arrow-alt'></i>
+            <button className="w-full px-8 h-12 bg-blue-600 text-neutral-50 text-base font-normal rounded-md flex items-center justify-center gap-x-2" onClick={paymentMethod}>
+                Processed to Pay <i className='bx bx-right-arrow-alt'></i> 
             </button>
 
         </div>

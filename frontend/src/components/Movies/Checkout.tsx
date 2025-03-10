@@ -32,7 +32,6 @@ const paymentMethod = async () =>{
 
   console.log(result);
 
- 
 }
 
 const Checkout = () => {

@@ -26,6 +26,7 @@ const MovieDetails = () => {
           </div>
         </div>
 
+        {/* seleccionar horario */}
         <div className="col-span-1 space-y-10">
           <div className="space-y-6">
             <MovieTime />

@@ -1,17 +1,9 @@
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Movie from "../../interfaces/interfaces";
-import { getMovies } from "../../services/movies";
+import { useMovieStore } from "../store/useGloblaStore";
 
 const Movies = () => {
-  const [movies, setMovies] = useState<Movie[]>([]);
-
-  const handleFetchMovies = async () => {
-    const data = await getMovies();
-    setMovies(data);
-  };
-
-  handleFetchMovies();
+  
+  const movies = useMovieStore((state) => state.movies);
 
   return (
     <div className="w-full lg:px-28 md:px-16 sm:px-7 px-4 my-[8ch] space-y-14">

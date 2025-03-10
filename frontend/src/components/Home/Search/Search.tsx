@@ -1,18 +1,8 @@
-import React, { useState } from 'react'
-import Movie from '../../../interfaces/interfaces';
-import { getMovies } from '../../../services/movies';
+import { useMovieStore } from '../../store/useGloblaStore';
 
 const Search = () => {
+    const movies = useMovieStore((state) => state.movies);
 
-    const [movies, setMovies] = useState<Movie[]>([]);
-    
-      const handleFetchMovies = async() => {
-        const data = await getMovies();
-        setMovies(data);
-      } 
-    
-      handleFetchMovies();
-      
   return (
     <div  className='w-full lg:px-28 md:px-16 sm:px-7 px-4 my-[8ch]'>
         <div className='w-full bg-neutral-100 rounded-md dark:bg-neutral-900/40 p-8'>

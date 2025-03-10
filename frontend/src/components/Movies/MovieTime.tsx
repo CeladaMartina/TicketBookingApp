@@ -28,6 +28,11 @@ const MovieTime = () => {
               <option value="05:00 AM">05:00 AM</option>
             </select>
           </div>
+          <div className="">
+          <label htmlFor="movies" className="block mb-2 font-semibold">
+              Screen 1
+            </label>
+          </div>
         </div>
       ) : (
         <div className="space-y-5">

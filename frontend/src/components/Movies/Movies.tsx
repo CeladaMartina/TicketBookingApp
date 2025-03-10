@@ -14,7 +14,7 @@ const Movies = () => {
             type="number"
             placeholder="Search movies..."
             id="movies"
-            name="mvovies"
+            name="movies"
             className="w-full appearance-none text-neutral-800 dark:text-neutral-100 placeholder:text-neutral-400 dark:placeholder:text-neutral-600 inline-block bg-neutral-200/60 dark: bg-neutral-900/60 px-3 h-12 border border-neutral-200 dark:border-neutral-900 rounded-md focus:outline-none focus:bg-neutral-100 dark:focus:bg-neutral-900"
           />
           <button className="bg-blue-600 h-11 px-4 rounded-md text-base text-neutral-50 font-normal">
@@ -43,7 +43,7 @@ const Movies = () => {
         {movies.map((item) => (
           <Link
             key={item.id}
-            to={"/movie/details"}
+            to={`/movie/details/${item.id}`}
             className="w-full bg-neutral-200/60 block dark:bg-neutral-900/40 rounded-xl p-4"
           >
             <img
